@@ -112,7 +112,7 @@ namespace ITS.Controllers
             PdfWriter writer = PdfWriter.GetInstance(document, ms);
             var htmlContext = new HtmlPipelineContext(null);
             htmlContext.SetTagFactory(iTextSharp.tool.xml.html.Tags.GetHtmlTagProcessorFactory());
-            var cssResolver = XMLWorkerHelper.GetInstance().GetDefaultCssResolver(false);
+            var cssResolver = XMLWorkerHelper.GetInstance().GetDefaultCssResolver(false); 
             cssResolver.AddCssFile(System.Web.HttpContext.Current.Server.MapPath("~/Content/bootstrap.min.css"), true);
             //var pipeline = new CssResolverPipeline(cssResolver, new HtmlPipeline(htmlContext, new ElementHandlerPipeline(XhtmlHelper, null)));//Here's where we add our IElementHandler
             var pipeline = new CssResolverPipeline(cssResolver, new HtmlPipeline(htmlContext, new PdfWriterPipeline(document, null)));
